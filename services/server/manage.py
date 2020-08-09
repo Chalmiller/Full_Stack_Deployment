@@ -19,19 +19,29 @@ def recreate_db():
 def seed_db():
     """Seeds the database."""
     db.session.add(Book(
-        title='On the Road',
-        author='Jack Kerouac',
-        read=True
-    ))
-    db.session.add(Book(
-        title='Harry Potter and the Philosopher\'s Stone',
-        author='J. K. Rowling',
+        title='Effective DevOps: Building a Culture of Collaboration, Affinity, and Tooling at Scale',
+        author='Jennifer Davis, Ryn Daniels',
         read=False
     ))
     db.session.add(Book(
-        title='Green Eggs and Ham',
-        author='Dr. Seuss',
-        read=True
+        title='Practical DevOps',
+        author='Joakim Verona',
+        read=False
+    ))
+    db.session.add(Book(
+        title='Site Reliability Engineering',
+        author='Niall Murphy, Betsy Beyer, Chris Jones, Jennifer Petoff',
+        read=False
+    ))
+    db.session.add(Book(
+        title='The DevOps HandBook',
+        author='Gene Kim, Jez Humble, John Willis, and Patrick, Debois',
+        read=False
+    ))
+    db.session.add(Book(
+        title='Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation',
+        author='Jez Humble and David Farley',
+        read=False
     ))
     db.session.commit()
 

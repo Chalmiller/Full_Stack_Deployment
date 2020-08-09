@@ -24,9 +24,11 @@ kubectl convert -f jenkins_pipeline/jenkins-deployment.yml --output-version apps
 ### Istio
 Install Istio and export it into your PATH
 ```
-cd ~/istion-1.6.7
+cd ~/istio-1.6.7
 export PATH=$PWD/bin:$PATH
 ```
+
+generate a namespace for Istio to automatically inject its Envoy sidecar into the cluster
 
 ### Docker
 
