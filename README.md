@@ -1,11 +1,3 @@
-# Running Flask on Kubernetes
-
-## Want to learn how to build this?
-
-Check out the [post](https://testdriven.io/running-flask-on-kubernetes).
-
-## Want to use this project?
-
 ### Docker
 
 Build the images and spin up the containers:
@@ -21,7 +13,7 @@ $ docker-compose exec server python manage.py recreate_db
 $ docker-compose exec server python manage.py seed_db
 ```
 
-Test it out at:
+Testing:
 
 1. [http://localhost:8080/](http://localhost:8080/)
 1. [http://localhost:5001/books/ping](http://localhost:5001/books/ping)
@@ -93,11 +85,9 @@ $ kubectl exec postgres-<POD_IDENTIFIER> --stdin --tty -- createdb -U postgres b
 Build and push the image to Docker Hub:
 
 ```sh
-$ docker build -t mjhea0/flask-kubernetes ./services/server
-$ docker push mjhea0/flask-kubernetes
+$ docker build -t chalmiller1/flask-kubernetes ./services/server
+$ docker push chalmiller1/flask-kubernetes
 ```
-
-> Make sure to replace `mjhea0` with your Docker Hub namespace in the above commands as well as in *kubernetes/flask-deployment.yml*
 
 Create the deployment:
 
@@ -145,13 +135,12 @@ Try it out:
 Build and push the image to Docker Hub:
 
 ```sh
-$ docker build -t mjhea0/vue-kubernetes ./services/client \
+$ docker build -t chalmiller1/vue-kubernetes ./services/client \
     -f ./services/client/Dockerfile-minikube
 
-$ docker push mjhea0/vue-kubernetes
+$ docker push chalmiller1/vue-kubernetes
 ```
 
-> Again, replace `mjhea0` with your Docker Hub namespace in the above commands as well as in *kubernetes/vue-deployment.yml*
 
 Create the deployment:
 
