@@ -21,6 +21,13 @@ like:
 kubectl convert -f jenkins_pipeline/jenkins-deployment.yml --output-version apps/v1
 ```
 
+### Istio
+Install Istio and export it into your PATH
+```
+cd ~/istion-1.6.7
+export PATH=$PWD/bin:$PATH
+```
+
 ### Docker
 
 Build the images and spin up the containers:
