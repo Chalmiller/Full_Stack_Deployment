@@ -14,16 +14,19 @@ class Book(db.Model):
     title = db.Column(db.String(255), nullable=False)
     author = db.Column(db.String(255), nullable=False)
     read = db.Column(db.Boolean(), default=False, nullable=False)
+    comment = db.Column(db.String(255), nullable=False)
 
-    def __init__(self, title, author, read):
+    def __init__(self, title, author, read, comment):
         self.title = title
         self.author = author
         self.read = read
+        self.comment = comment
 
     def to_json(self):
         return {
             'id': self.id,
             'title': self.title,
             'author': self.author,
-            'read': self.read
+            'read': self.read,
+            'comment': self.comment
         }

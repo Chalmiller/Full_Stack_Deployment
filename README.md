@@ -1,34 +1,10 @@
-# To start we need to run Jenkins locally
+# Running Flask on Kubernetes
 
-The following are a few commands to use if running on a MacOS, like myself
-```
-Install the latest LTS version: brew install jenkins-lts
-Install a specific LTS version: brew install jenkins-lts@YOUR_VERSION
-Start the Jenkins service: brew services start jenkins-lts
-Restart the Jenkins service: brew services restart jenkins-lts
-Update the Jenkins version: brew upgrade jenkins-lts
-```
-Note: Use yamllint to lint check any yaml files. It's very helpful
-```
-pip install yamllint
-```
+## Want to learn how to build this?
 
-Also, if you ever run into an issue with the kubectl API, there is a very handy tool for converting the yml files
-to the desired updated API:
-```
-kubectl convert -f <file> --output-version <group>/<version>
-like:
-kubectl convert -f jenkins_pipeline/jenkins-deployment.yml --output-version apps/v1
-```
+Check out the [post](https://testdriven.io/running-flask-on-kubernetes).
 
-### Istio
-Install Istio and export it into your PATH
-```
-cd ~/istio-1.6.7
-export PATH=$PWD/bin:$PATH
-```
-
-generate a namespace for Istio to automatically inject its Envoy sidecar into the cluster
+## Want to use this project?
 
 ### Docker
 
@@ -64,6 +40,7 @@ Install and run [Minikube](https://kubernetes.io/docs/setup/minikube/):
 Start the cluster:
 
 ```sh
+$ minikube config set vm-driver hyperkit
 $ minikube start --vm-driver=virtualbox
 $ minikube dashboard
 ```

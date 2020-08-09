@@ -1,7 +1,7 @@
 from flask.cli import FlaskGroup
 
-from .project import create_app, db
-from .project.api.models import Book
+from project import create_app, db
+from project.api.models import Book
 
 
 app = create_app()
@@ -21,27 +21,32 @@ def seed_db():
     db.session.add(Book(
         title='Effective DevOps: Building a Culture of Collaboration, Affinity, and Tooling at Scale',
         author='Jennifer Davis, Ryn Daniels',
-        read=False
+        read=False,
+        comment='very cool'
     ))
     db.session.add(Book(
         title='Practical DevOps',
         author='Joakim Verona',
-        read=False
+        read=False,
+        comment='very cool'
     ))
     db.session.add(Book(
         title='Site Reliability Engineering',
         author='Niall Murphy, Betsy Beyer, Chris Jones, Jennifer Petoff',
-        read=False
+        read=False,
+        comment='very cool'
     ))
     db.session.add(Book(
         title='The DevOps HandBook',
         author='Gene Kim, Jez Humble, John Willis, and Patrick, Debois',
-        read=False
+        read=False,
+        comment='very cool'
     ))
     db.session.add(Book(
         title='Continuous Delivery: Reliable Software Releases through Build, Test, and Deployment Automation',
         author='Jez Humble and David Farley',
-        read=False
+        read=False,
+        comment='very cool'
     ))
     db.session.commit()
 

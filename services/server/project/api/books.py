@@ -20,7 +20,8 @@ def all_books():
         title = post_data.get('title')
         author = post_data.get('author')
         read = post_data.get('read')
-        db.session.add(Book(title=title, author=author, read=read))
+        comment = post_data.get('comment')
+        db.session.add(Book(title=title, author=author, read=read, comment=comment))
         db.session.commit()
         response_object['message'] = 'Book added!'
     else:
@@ -32,7 +33,7 @@ def all_books():
 def ping():
     return jsonify({
         'status': 'success',
-        'message': 'made it!!',
+        'message': 'pong!',
         'container_id': os.uname()[1]
     })
 
@@ -49,6 +50,7 @@ def single_book(book_id):
         book.title = post_data.get('title')
         book.author = post_data.get('author')
         book.read = post_data.get('read')
+        book.comment = post_data.get('comment')
         db.session.commit()
         response_object['message'] = 'Book updated!'
     if request.method == 'DELETE':

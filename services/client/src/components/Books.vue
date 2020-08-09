@@ -21,11 +21,11 @@
             <tr v-for="(book, index) in books" :key="index">
               <td>{{ book.title }}</td>
               <td>{{ book.author }}</td>
-              <td>{{ book.comment }}</td>
               <td>
                 <span v-if="book.read">Yes</span>
                 <span v-else>No</span>
               </td>
+              <td>{{ book.comment }}</td>
               <td>
                 <button
                         type="button"
@@ -76,6 +76,16 @@
             <b-form-checkbox value="true">Read?</b-form-checkbox>
           </b-form-checkbox-group>
         </b-form-group>
+        <b-form-group id="form-comment-group"
+                      label="Comment:"
+                      label-for="form-comment-input">
+            <b-form-input id="form-comment-input"
+                          type="text"
+                          v-model="addBookForm.comment"
+                          required
+                          placeholder="Enter Comment">
+            </b-form-input>
+          </b-form-group>
         <b-button type="submit" variant="primary">Submit</b-button>
         <b-button type="reset" variant="danger">Reset</b-button>
       </b-form>
@@ -110,6 +120,16 @@
             <b-form-checkbox value="true">Read?</b-form-checkbox>
           </b-form-checkbox-group>
         </b-form-group>
+        <b-form-group id="form-comment-edit-group"
+                      label="Comment:"
+                      label-for="form-comment-edit-input">
+            <b-form-input id="form-comment-edit-input"
+                          type="text"
+                          v-model="editForm.comment"
+                          required
+                          placeholder="Enter Comment">
+            </b-form-input>
+          </b-form-group>
         <b-button type="submit" variant="primary">Update</b-button>
         <b-button type="reset" variant="danger">Cancel</b-button>
       </b-form>
@@ -129,12 +149,14 @@ export default {
         title: '',
         author: '',
         read: [],
+        comment: '',
       },
       editForm: {
         id: '',
         title: '',
         author: '',
         read: [],
+        comment: '',
       },
       message: '',
       showMessage: false,
@@ -202,10 +224,12 @@ export default {
       this.addBookForm.title = '';
       this.addBookForm.author = '';
       this.addBookForm.read = [];
+      this.addBookForm.comment = '';
       this.editForm.id = '';
       this.editForm.title = '';
       this.editForm.author = '';
       this.editForm.read = [];
+      this.editForm.comment = '';
     },
     onSubmit(evt) {
       evt.preventDefault();
@@ -216,6 +240,7 @@ export default {
         title: this.addBookForm.title,
         author: this.addBookForm.author,
         read, // property shorthand
+        author: this.addBookForm.comment,
       };
       this.addBook(payload);
       this.initForm();
@@ -229,6 +254,7 @@ export default {
         title: this.editForm.title,
         author: this.editForm.author,
         read,
+        author: this.editForm.comment,
       };
       this.updateBook(payload, this.editForm.id);
     },
