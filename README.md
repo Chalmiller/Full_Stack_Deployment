@@ -1,3 +1,35 @@
+### Jenkins 
+
+The following are a few commands to use if running on a MacOS, like myself
+```
+Install the latest LTS version: brew install jenkins-lts
+Install a specific LTS version: brew install jenkins-lts@YOUR_VERSION
+Start the Jenkins service: brew services start jenkins-lts
+Restart the Jenkins service: brew services restart jenkins-lts
+Update the Jenkins version: brew upgrade jenkins-lts
+```
+Note: Use yamllint to lint check any yaml files. It's very helpful
+```
+pip install yamllint
+```
+
+Also, if you ever run into an issue with the kubectl API, there is a very handy tool for converting the yml files
+to the desired updated API:
+```
+kubectl convert -f <file> --output-version <group>/<version>
+like:
+kubectl convert -f jenkins_pipeline/jenkins-deployment.yml --output-version apps/v1
+```
+
+### Istio
+Install Istio and export it into your PATH
+```
+cd ~/istio-1.6.7
+export PATH=$PWD/bin:$PATH
+```
+
+generate a namespace for Istio to automatically inject its Envoy sidecar into the cluster
+
 ### Docker
 
 Build the images and spin up the containers:
@@ -21,11 +53,7 @@ Testing:
 
 #### Minikube
 
-Install and run [Minikube](https://kubernetes.io/docs/setup/minikube/):
-
-1. Install a [Hypervisor](https://kubernetes.io/docs/tasks/tools/install-minikube/#install-a-hypervisor) (like [VirtualBox](https://www.virtualbox.org/wiki/Downloads) or [HyperKit](https://github.com/moby/hyperkit)) to manage virtual machines
-1. Install and Set Up [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) to deploy and manage apps on Kubernetes
-1. Install [Minikube](https://github.com/kubernetes/minikube/releases)
+Install and Run Minikube for local cluster deployment
 
 Start the cluster:
 
@@ -121,6 +149,14 @@ Add entry to */etc/hosts* file:
 ```
 <MINIKUBE_IP> hello.world
 ```
+^ A Helpful Command to do so is to run 
+```
+echo "$(minikube ip) hello.world" | sudo tee -a /etc/hosts
+```
+
+Note: You need sudo privileges to run this command. 
+Also, if for any reason you've run the command more than once, 
+you'll need to remove the prvious entries in /etc/hosts
 
 Try it out:
 

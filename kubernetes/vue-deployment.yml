@@ -18,7 +18,7 @@ spec:
         app: vue
     spec:
       containers:
-      - image: mjhea0/vue-kubernetes:latest
+      - image: chalmiller1/vue-kubernetes:latest
         imagePullPolicy: Always
         name: vue
         resources: {}
