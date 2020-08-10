@@ -16,8 +16,6 @@ $ docker-compose exec server python manage.py seed_db
 Testing:
 
 1. [http://localhost:8080/](http://localhost:8080/)
-1. [http://localhost:5001/books/ping](http://localhost:5001/books/ping)
-1. [http://localhost:5001/books](http://localhost:5001/books)
 
 ### Kubernetes
 
