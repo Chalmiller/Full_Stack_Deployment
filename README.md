@@ -1,3 +1,16 @@
+### Next Steps:
+```
+1. Deploy Kubernetes Cluster to AWS EC2 Instance
+2. Set up Istio for traffic management
+2. Generate Jenkins CI/CD pipeline 
+    - Set up webhook to this github repo
+    - Set up test suite 
+3. Set up Ansible deployment 
+4. Feature Creep:
+        - Comment thread for each suggested title
+```
+
+
 ### Jenkins 
 
 The following are a few commands to use if running on a MacOS, like myself
@@ -12,6 +25,13 @@ Note: Use yamllint to lint check any yaml files. It's very helpful
 ```
 pip install yamllint
 ```
+
+```
+kubectl create namespace jenkins
+kubectl create -f jenkins_pipeline/jenkins-deployment.yml
+kubectl create -f jenkins_pipeline/jenkins-service.yml
+```
+
 
 Also, if you ever run into an issue with the kubectl API, there is a very handy tool for converting the yml files
 to the desired updated API:
